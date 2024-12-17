@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMate - Register</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="register-page">
+    <div class="container">
+        <h1 class="logo">
+            <span class="task">Task</span><span class="mate">Mate</span>
+        </h1>
+        <div class="form-container">
+            <h2>Register</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <select id="role" required>
+                        <option value="">Select a role</option>
+                        <option value="pemesan">Pemesan</option>
+                        <option value="pelaksana">Pelaksana</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I understand and agree with the <a href="terms.html">Terms & Conditions</a></label>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+            <p>Already have an account? <a href="index.html">Log In</a></p>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/register.js"></script>
+</body>
+</html>

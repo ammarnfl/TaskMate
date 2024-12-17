@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMate - Pelaksana Application</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="application-page">
+    <header>
+        <div class="container">
+            <h1 class="logo">
+                <span class="task">Task</span><span class="mate">Mate</span>
+            </h1>
+        </div>
+    </header>
+    <main class="container">
+        <h2>Pelaksana Application Form</h2>
+        <form id="pelaksana-application-form">
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" required>
+            </div>
+            <div class="form-group">
+                <label for="date-of-birth">Date of Birth</label>
+                <input type="date" id="date-of-birth" required>
+            </div>
+            <div class="form-group">
+                <label for="primary-mobile">Primary Mobile Number</label>
+                <input type="tel" id="primary-mobile" required>
+            </div>
+            <div class="form-group">
+                <label for="emergency-phone">Emergency Phone Number</label>
+                <input type="tel" id="emergency-phone" required>
+            </div>
+            <div class="form-group">
+                <label for="id-card">ID Card Photo (PDF only)</label>
+                <input type="file" id="id-card" accept=".pdf" required>
+            </div>
+            <div class="form-group">
+                <label for="profile-photo">Profile Photo (JPG, JPEG, PNG only)</label>
+                <input type="file" id="profile-photo" accept=".jpg,.jpeg,.png" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </main>
+    <script src="js/main.js"></script>
+    <script src="js/pelaksana-application.js"></script>
+</body>
+</html>
