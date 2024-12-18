@@ -6,45 +6,58 @@
     <title>TaskMate - Pelaksana Application</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="application-page">
-    <header>
-        <div class="container">
-            <h1 class="logo">
-                <span class="task">Task</span><span class="mate">Mate</span>
-            </h1>
+<body>
+    <div class="container">
+        <h1><span class="task">Task</span><span class="mate">Mate</span></h1>
+        <div class="form-container">
+            <h2>Pelaksana Application Form</h2>
+            <form id="pelaksanaApplicationForm">
+                <!-- <input type="text" id="fullName" placeholder="Full Name" required>
+                <input type="date" id="dateOfBirth" required>
+                <input type="tel" id="primaryMobileNumber" placeholder="Primary Mobile Number" required>
+                <input type="tel" id="emergencyPhoneNumber" placeholder="Emergency Phone Number" required>
+                <input type="file" id="idCardPhoto" accept=".pdf" required>
+                <input type="file" id="profilePhoto" accept=".jpg,.jpeg,.png" required> -->
+
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" placeholder="Full Name" required>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="dateOfBirth">Tanggal Lahir</label>
+                    <input type="date" id="dateOfBirth" required>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="primaryMobileNumber">Primary Mobile Number</label>
+                    <input type="tel" id="primaryMobileNumber" placeholder="Primary Mobile Number" required>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="emergencyPhoneNumber">Emergency Phone Number</label>
+                    <input type="tel" id="emergencyPhoneNumber" placeholder="Emergency Phone Number" required>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="idCardPhoto">Input SIM Card</label>
+                    <input type="file" id="idCardPhoto" accept=".pdf" required>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="profilePhoto">Input Photo Profile</label>
+                    <input type="file" id="profilePhoto" accept=".jpg,.jpeg,.png" required>
+                  </div>
+                  
+                <button type="submit">Submit</button>
+            </form>
         </div>
-    </header>
-    <main class="container">
-        <h2>Pelaksana Application Form</h2>
-        <form id="pelaksana-application-form">
-            <div class="form-group">
-                <label for="full-name">Full Name</label>
-                <input type="text" id="full-name" required>
-            </div>
-            <div class="form-group">
-                <label for="date-of-birth">Date of Birth</label>
-                <input type="date" id="date-of-birth" required>
-            </div>
-            <div class="form-group">
-                <label for="primary-mobile">Primary Mobile Number</label>
-                <input type="tel" id="primary-mobile" required>
-            </div>
-            <div class="form-group">
-                <label for="emergency-phone">Emergency Phone Number</label>
-                <input type="tel" id="emergency-phone" required>
-            </div>
-            <div class="form-group">
-                <label for="id-card">ID Card Photo (PDF only)</label>
-                <input type="file" id="id-card" accept=".pdf" required>
-            </div>
-            <div class="form-group">
-                <label for="profile-photo">Profile Photo (JPG, JPEG, PNG only)</label>
-                <input type="file" id="profile-photo" accept=".jpg,.jpeg,.png" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </main>
-    <script src="js/main.js"></script>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
     <script src="js/pelaksana-application.js"></script>
 </body>
 </html>

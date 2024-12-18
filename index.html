@@ -5,30 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskMate - Login</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script type="module" src="firebase-config.js" defer></script>
+    <script type="module" src="js/auth.js" defer></script>
+    <!-- <script type="module" src="js/firebase-config.js" defer></script> -->
 </head>
-<body class="login-page">
+<body>
     <div class="container">
-        <h1 class="logo">
-            <span class="task">Task</span><span class="mate">Mate</span>
-        </h1>
+        <h1><span class="task">Task</span><span class="mate">Mate</span></h1>
         <div class="form-container">
-            <h2>Log In</h2>
-            <form id="login-form">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Log In</button>
+            <h2 id="title-login">Log In</h2>
+            <form id="loginForm">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit" id="loginButton">Log In</button>
             </form>
-            <p>Don't have an account? <a href="register.html">Register</a></p>
+            <p id="option">Don't have an account? <a href="register.html">Register</a></p>
         </div>
     </div>
-    <script src="js/main.js"></script>
-    <script src="js/auth.js"></script>
+
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script> -->
+    <!-- <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script> -->
 </body>
 </html>

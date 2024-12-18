@@ -6,37 +6,45 @@
     <title>TaskMate - Pemesan Application</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="application-page">
-    <header>
-        <div class="container">
-            <h1 class="logo">
-                <span class="task">Task</span><span class="mate">Mate</span>
-            </h1>
+<body>
+    <div class="container">
+        <h1><span class="task">Task</span><span class="mate">Mate</span></h1>
+        <div class="form-container">
+            <h2>Pemesan Application Form</h2>
+            <form id="pemesanApplicationForm">
+                <!-- <input type="text" id="fullName" placeholder="Full Name" required>
+                <input type="date" id="dateOfBirth" required>
+                <input type="tel" id="primaryMobileNumber" placeholder="Primary Mobile Number" required>
+                <input type="tel" id="emergencyPhoneNumber" placeholder="Emergency Phone Number" required> -->
+
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" placeholder="Full Name" required>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="dateOfBirth">Tanggal Lahir</label>
+                    <input type="date" id="dateOfBirth" required>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="primaryMobileNumber">Primary Mobile Number</label>
+                    <input type="tel" id="primaryMobileNumber" placeholder="Primary Mobile Number" required>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="emergencyPhoneNumber">Emergency Phone Number</label>
+                    <input type="tel" id="emergencyPhoneNumber" placeholder="Emergency Phone Number" required>
+                  </div>
+                <button type="submit">Submit</button>
+            </form>
         </div>
-    </header>
-    <main class="container">
-        <h2>Pemesan Application Form</h2>
-        <form id="pemesan-application-form">
-            <div class="form-group">
-                <label for="full-name">Full Name</label>
-                <input type="text" id="full-name" required>
-            </div>
-            <div class="form-group">
-                <label for="date-of-birth">Date of Birth</label>
-                <input type="date" id="date-of-birth" required>
-            </div>
-            <div class="form-group">
-                <label for="primary-mobile">Primary Mobile Number</label>
-                <input type="tel" id="primary-mobile" required>
-            </div>
-            <div class="form-group">
-                <label for="emergency-phone">Emergency Phone Number</label>
-                <input type="tel" id="emergency-phone" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </main>
-    <script src="js/main.js"></script>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
     <script src="js/pemesan-application.js"></script>
 </body>
 </html>

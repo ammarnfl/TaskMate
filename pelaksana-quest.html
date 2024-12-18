@@ -5,24 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskMate - Pelaksana Quest</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script type="module" src="js/auth.js" defer></script>
 </head>
-<body class="quest-page">
+<body id="quest">
     <header>
-        <div class="container">
-            <h1 class="logo">
-                <span class="task">Task</span><span class="mate">Mate</span>
-            </h1>
-            <button id="logout-btn" class="btn btn-secondary">Log Out</button>
-        </div>
+        <h1 id="title-header"><span class="task">Task</span><span class="mate">Mate</span></h1>
+        <button id="logoutBtn">Log Out</button>
     </header>
-    <main class="container">
-        <h2>Pelaksana Quest Page</h2>
-        <div id="quest-list">
-            <p class="no-quest">No quest here yet</p>
-            <p class="sub-text">Check back soon for updates!</p>
-        </div>
-    </main>
-    <script src="js/main.js"></script>
-    <script src="js/pelaksana-quest.js"></script>
+    <div class="container-quest">
+        <h2>No Quest Here Yet</h2>
+        <h4>Check back soon for updates!</h4>
+        <div id="questList"></div>
+    </div>
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+    <script src="js/firebase-config.js"></script> -->
+    <!-- <script src="js/pelaksana-quest.js"></script> -->
 </body>
 </html>

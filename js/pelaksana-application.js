@@ -1,36 +1,36 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const pelaksanaForm = document.getElementById('pelaksana-application-form');
+const auth = firebase.auth();
+const database = firebase.database();
 
-    if (pelaksanaForm) {
-        pelaksanaForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const fullName = document.getElementById('full-name').value;
-            const dateOfBirth = document.getElementById('date-of-birth').value;
-            const primaryMobile = document.getElementById('primary-mobile').value;
-            const emergencyPhone = document.getElementById('emergency-phone').value;
-            const idCard = document.getElementById('id-card').files[0];
-            const profilePhoto = document.getElementById('profile-photo').files[0];
+const pelaksanaApplicationForm = document.getElementById('pelaksanaApplicationForm');
 
-            if (!validatePhoneNumber(primaryMobile) || !validatePhoneNumber(emergencyPhone)) {
-                showNotification('Please enter valid phone numbers', 'error');
-                return;
-            }
-
-            if (!idCard || idCard.type !== 'application/pdf') {
-                showNotification('Please upload a valid PDF file for ID Card', 'error');
-                return;
-            }
-
-            if (!profilePhoto || !['image/jpeg', 'image/png'].includes(profilePhoto.type)) {
-                showNotification('Please upload a valid JPG or PNG file for Profile Photo', 'error');
-                return;
-            }
-
-            // Simulate form submission (replace with actual submission logic)
-            setTimeout(() => {
-                showNotification('Application submitted successfully!');
-                window.location.href = 'pelaksana-quest.html';
-            }, 1000);
-        });
+pelaksanaApplicationForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const user = auth.currentUser;
+    if (!user) {
+        alert('User not authenticated');
+        return;
     }
+
+    const fullName = document.getElementById('fullName').value;
+    const dateOfBirth = document.getElementById('dateOfBirth').value;
+    const primaryMobileNumber = document.getElementById('primaryMobileNumber').value;
+    const emergencyPhoneNumber = document.getElementById('emergencyPhoneNumber').value;
+    const idCardPhoto = document.getElementById('idCardPhoto').files[0];
+    const profilePhoto = document.getElementById('profilePhoto').files[0];
+
+    // Here you would typically upload the files to Firebase Storage
+    // For simplicity, we'll just store the file names
+    database.ref('pelaksana/' + user.uid).set({
+        fullName: fullName,
+        dateOfBirth: dateOfBirth,
+        primaryMobileNumber: primaryMobileNumber,
+        emergencyPhoneNumber: emergencyPhoneNumber,
+        idCardPhoto: idCardPhoto ? idCardPhoto.name : null,
+        profilePhoto: profilePhoto ? profilePhoto.name : null
+    }).then(() => {
+        alert('Application submitted successfully!');
+        window.location.href = 'pelaksana-quest.html';
+    }).catch((error) => {
+        alert('Failed to submit application: ' + error.message);
+    });
 });

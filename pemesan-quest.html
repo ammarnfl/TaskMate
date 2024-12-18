@@ -5,25 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskMate - Pemesan Quest</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script type="module" src="js/auth.js" defer></script>
 </head>
-<body class="quest-page">
+<body id="quest">
     <header>
-        <div class="container">
-            <h1 class="logo">
-                <span class="task">Task</span><span class="mate">Mate</span>
-            </h1>
-            <button id="logout-btn" class="btn btn-secondary">Log Out</button>
-        </div>
+        <h1 id="title-header"><span class="task">Task</span><span class="mate">Mate</span></h1>
+        <button id="logoutBtn">Log Out</button>
     </header>
-    <main class="container">
-        <h2>Pemesan Quest Page</h2>
-        <div id="quest-list">
-            <p class="no-quest">No quest submitted yet</p>
-            <p class="sub-text">Start creating your task now!</p>
+    <div class="container-quest">
+        <h2>No Quest Submitted Yet</h2>
+        <h4>Start creating your task now!</h4>
+        <div id="questList"></div>
+        <button id="addQuestBtn" class="floating-btn">Add Quest</button>
+    </div>
+
+    <div id="addQuestModal" class="modal">
+        <div class="modal-content">
+            <h3>Add New Quest</h3>
+            <form id="addQuestForm">
+                <input type="text" id="questTitle" placeholder="Quest Title" required>
+                <textarea id="questDescription" placeholder="Quest Description" required></textarea>
+                <button type="submit">Add Quest</button>
+                <button type="button" id="cancelAddQuest">Cancel</button>
+            </form>
         </div>
-        <button id="add-quest-btn" class="btn btn-primary">Add Quest</button>
-    </main>
-    <script src="js/main.js"></script>
-    <script src="js/pemesan-quest.js"></script>
+    </div>
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+    <script src="js/firebase-config.js"></script> -->
+    <!-- <script src="js/pemesan-quest.js"></script> -->
 </body>
 </html>

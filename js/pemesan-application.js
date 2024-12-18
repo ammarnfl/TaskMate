@@ -1,24 +1,30 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const pemesanForm = document.getElementById('pemesan-application-form');
+const auth = firebase.auth();
+const database = firebase.database();
 
-    if (pemesanForm) {
-        pemesanForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const fullName = document.getElementById('full-name').value;
-            const dateOfBirth = document.getElementById('date-of-birth').value;
-            const primaryMobile = document.getElementById('primary-mobile').value;
-            const emergencyPhone = document.getElementById('emergency-phone').value;
+const pemesanApplicationForm = document.getElementById('pemesanApplicationForm');
 
-            if (!validatePhoneNumber(primaryMobile) || !validatePhoneNumber(emergencyPhone)) {
-                showNotification('Please enter valid phone numbers', 'error');
-                return;
-            }
-
-            // Simulate form submission (replace with actual submission logic)
-            setTimeout(() => {
-                showNotification('Application submitted successfully!');
-                window.location.href = 'pemesan-quest.html';
-            }, 1000);
-        });
+pemesanApplicationForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const user = auth.currentUser;
+    if (!user) {
+        alert('User not authenticated');
+        return;
     }
+
+    const fullName = document.getElementById('fullName').value;
+    const dateOfBirth = document.getElementById('dateOfBirth').value;
+    const primaryMobileNumber = document.getElementById('primaryMobileNumber').value;
+    const emergencyPhoneNumber = document.getElementById('emergencyPhoneNumber').value;
+
+    database.ref('pemesan/' + user.uid).set({
+        fullName: fullName,
+        dateOfBirth: dateOfBirth,
+        primaryMobileNumber: primaryMobileNumber,
+        emergencyPhoneNumber: emergencyPhoneNumber
+    }).then(() => {
+        alert('Application submitted successfully!');
+        window.location.href = 'pemesan-quest.html';
+    }).catch((error) => {
+        alert('Failed to submit application: ' + error.message);
+    });
 });
