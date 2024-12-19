@@ -16,26 +16,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
 
-// Auth Status
-function checkAuthState() {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in
-      if (window.location.pathname.includes('index.html') || window.location.pathname.includes('register.html')) {
-        window.location.href = 'pemesan-quest.html'; // Redirect to main page if already logged in
-      }
-    } else {
-      // User is signed out
-      if (!window.location.pathname.includes('index.html') && !window.location.pathname.includes('register.html')) {
-        window.location.href = 'index.html'; // Redirect to login page if not logged in
-      }
-    }
-  });
-}
-
-// Call the function to check auth state
-// checkAuthState();
-
 // Login
 const loginButton = document.getElementById('loginButton');
 if (loginButton) {
@@ -59,6 +39,22 @@ if (loginButton) {
                             // Store userId and role in localStorage (optional)
                             localStorage.setItem("loggedInUserId", user.uid);
                             localStorage.setItem("userRole", role);
+
+                            // Check registration status
+                            // const applicationRef = ref(database, 'pemesan/' + user.uid);
+                            
+                            // get(applicationRef)
+                            //     .then((applicationSnapshot) => {
+                            //         if (applicationSnapshot.exists()) {
+                            //             alert("Pengguna sudah melakukan pendaftaran");
+                            //             window.location.href = 'pemesan-quest.html'; // Redirect to the appropriate page
+                            //             return;
+                            //         }
+                            //     })
+                            //     .catch((error) => {
+                            //         console.error('Error fetching user data:', error);
+                            //         alert('An error occured while retrieving pemesan data')
+                            //     })
 
                             alert('Login successful!');
 
@@ -133,3 +129,23 @@ if (logoutBtn) {
         });
     });
 }
+
+// Auth Status
+function checkAuthState() {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in
+        if (window.location.pathname.includes('index.html') || window.location.pathname.includes('register.html') || window.location.pathname.includes('terms.html')) {
+          window.location.href = role === 'Pemesan' ? 'pemesan-quest.html' : 'pelaksana-quest.html';
+        }
+      } else {
+        // User is signed out
+        if (!window.location.pathname.includes('index.html') && !window.location.pathname.includes('register.html') && !window.location.pathname.includes('terms.html')) {
+          window.location.href = 'index.html'; // Redirect to login page if not logged in
+        }
+      }
+    });
+  }
+  
+  // Call the function to check auth state
+  checkAuthState();

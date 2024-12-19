@@ -1,30 +1,58 @@
-const auth = firebase.auth();
-const database = firebase.database();
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
 
-const pemesanApplicationForm = document.getElementById('pemesanApplicationForm');
+const firebaseConfig = {
+    apiKey: "AIzaSyBqMW6ozva8xccC5vau5s4SUBE-vd4BVCc",
+    authDomain: "taskmate-94a36.firebaseapp.com",
+    projectId: "taskmate-94a36",
+    storageBucket: "taskmate-94a36.firebasestorage.app",
+    messagingSenderId: "937144601167",
+    appId: "1:937144601167:web:5d7dfbdf87998bae9f383a",
+    measurementId: "G-K1PYXWSRSD"
+};
 
-pemesanApplicationForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const user = auth.currentUser;
-    if (!user) {
-        alert('User not authenticated');
-        return;
-    }
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const database = getDatabase(app);
 
-    const fullName = document.getElementById('fullName').value;
-    const dateOfBirth = document.getElementById('dateOfBirth').value;
-    const primaryMobileNumber = document.getElementById('primaryMobileNumber').value;
-    const emergencyPhoneNumber = document.getElementById('emergencyPhoneNumber').value;
+// Get references to form and elements
+const pemesanApplicationForm = document.getElementById("pemesanApplicationForm");
+pemesanApplicationForm.addEventListener("submit", async function (e) {
+    e.preventDefault(); // Prevent form from refreshing the page
 
-    database.ref('pemesan/' + user.uid).set({
-        fullName: fullName,
-        dateOfBirth: dateOfBirth,
-        primaryMobileNumber: primaryMobileNumber,
-        emergencyPhoneNumber: emergencyPhoneNumber
-    }).then(() => {
-        alert('Application submitted successfully!');
+    const fullName = document.getElementById("fullName").value;
+    const dateOfBirth = document.getElementById("dateOfBirth").value;
+    const primaryMobileNumber = document.getElementById("primaryMobileNumber").value;
+    const emergencyPhoneNumber = document.getElementById("emergencyPhoneNumber").value;
+
+    try {
+        // Get the current user ID
+        const user = auth.currentUser;
+
+        if (!user) {    
+            alert("You need to be logged in to submit this form.");
+            return;
+        }
+
+        const userId = user.uid;
+
+        // Prepare data to save
+        const applicationData = {
+            fullName,
+            dateOfBirth,
+            primaryMobileNumber,
+            emergencyPhoneNumber,
+            applicationDate: new Date().toISOString(),
+        };
+
+        const applicationRef = ref(database, `pemesan/${userId}`);
+        await set(applicationRef, applicationData);
+
+        alert("Application submitted successfully!");
         window.location.href = 'pemesan-quest.html';
-    }).catch((error) => {
-        alert('Failed to submit application: ' + error.message);
-    });
+    } catch (error) {
+        console.error("Error submitting form:", error);
+        alert("An error occurred while submitting the form. Please try again.");
+    }
 });
