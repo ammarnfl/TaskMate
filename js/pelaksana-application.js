@@ -69,7 +69,35 @@ pelaksanaApplicationForm.addEventListener("submit", async function (e) {
         await set(applicationRef, applicationData);
 
         alert("Application submitted successfully!");
-        window.location.href = 'pelaksana-quest.html'
+        
+        // Display loading animation
+        const verificationContainer = document.createElement('div');
+        verificationContainer.className = 'verification-container';
+        verificationContainer.innerHTML = `
+            <div class="verification-content">
+                <div class="loader"></div>
+                <h2>Verifying your data...</h2>
+            </div>
+        `;
+        document.body.appendChild(verificationContainer);
+
+        // Simulate loading for 5 seconds
+        setTimeout(() => {
+            verificationContainer.innerHTML = `
+                <div class="verification-content">
+                    <img src="images/checklist-icon.png" alt="Checklist Icon" class="checklist-icon">
+                    <h2>Data Verified Successfully!</h2>
+                    <p>Your application has been verified.</p>
+                    <button id="okButton">OK</button>
+                </div>
+            `;
+
+            const okButton = document.getElementById("okButton");
+            okButton.addEventListener("click", () => {
+                verificationContainer.remove();
+                window.location.href = 'pelaksana-quest.html';
+            });
+        }, 5000); // 5 seconds
     } catch (error) {
         console.error("Error submitting form:", error);
         alert("An error occurred while submitting the form. Please try again.");
