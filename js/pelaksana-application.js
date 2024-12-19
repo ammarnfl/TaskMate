@@ -75,3 +75,48 @@ pelaksanaApplicationForm.addEventListener("submit", async function (e) {
         alert("An error occurred while submitting the form. Please try again.");
     }
 });
+
+// if (pelaksanaApplicationForm) {
+//     pelaksanaApplicationForm.addEventListener("submit", async function (e) {
+//         e.preventDefault();
+
+//         const fullName = document.getElementById("fullName").value;
+//         const dateOfBirth = document.getElementById("dateOfBirth").value;
+//         const primaryMobileNumber = document.getElementById("primaryMobileNumber").value;
+//         const emergencyPhoneNumber = document.getElementById("emergencyPhoneNumber").value;
+
+//         try {
+//             const user = auth.currentUser;
+
+//             if (!user) {
+//                 alert("You need to be logged in to submit this form.");
+//                 return;
+//             }
+
+//             const userId = user.uid;
+
+//             const applicationData = {
+//                 fullName,
+//                 dateOfBirth,
+//                 primaryMobileNumber,
+//                 emergencyPhoneNumber,
+//                 idCardPhoto: idCardPhotoPath,
+//                 profilePhoto: profilePhotoPath,
+//                 applicationDate: new Date().toISOString(),
+//             };
+
+//             const applicationRef = ref(database, `pelaksana/${userId}`);
+//             await set(applicationRef, applicationData);
+
+//             // Update registration status to true
+//             const userRef = ref(database, `users/${userId}`);
+//             await set(userRef, { isRegistered: true }, { merge: true });
+
+//             alert("Application submitted successfully!");
+//             window.location.href = 'pelaksana-quest.html';
+//         } catch (error) {
+//             console.error("Error submitting form:", error);
+//             alert("An error occurred while submitting the form. Please try again.");
+//         }
+//     });
+// }
