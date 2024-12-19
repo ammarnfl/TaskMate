@@ -16,6 +16,26 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
 
+// Auth Status
+function checkAuthState() {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in
+        if (window.location.pathname.includes('index.html') || window.location.pathname.includes('register.html') || window.location.pathname.includes('terms.html')) {
+          window.location.href = role === 'Pemesan' ? 'pemesan-quest.html' : 'pelaksana-quest.html';
+        }
+      } else {
+        // User is signed out
+        if (!window.location.pathname.includes('index.html') && !window.location.pathname.includes('register.html') && !window.location.pathname.includes('terms.html')) {
+          window.location.href = 'index.html'; // Redirect to login page if not logged in
+        }
+      }
+    });
+  }
+  
+  // Call the function to check auth state
+  checkAuthState();
+
 // Login
 const loginButton = document.getElementById('loginButton');
 if (loginButton) {
@@ -129,23 +149,3 @@ if (logoutBtn) {
         });
     });
 }
-
-// Auth Status
-function checkAuthState() {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in
-        if (window.location.pathname.includes('index.html') || window.location.pathname.includes('register.html') || window.location.pathname.includes('terms.html')) {
-          window.location.href = role === 'Pemesan' ? 'pemesan-quest.html' : 'pelaksana-quest.html';
-        }
-      } else {
-        // User is signed out
-        if (!window.location.pathname.includes('index.html') && !window.location.pathname.includes('register.html') && !window.location.pathname.includes('terms.html')) {
-          window.location.href = 'index.html'; // Redirect to login page if not logged in
-        }
-      }
-    });
-  }
-  
-  // Call the function to check auth state
-  checkAuthState();
