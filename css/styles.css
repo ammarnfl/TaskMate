@@ -81,7 +81,18 @@ h4 {
     max-width: 500px; /* Membatasi lebar maksimum container */
     margin: 0 auto; /* Memusatkan container */
     width: 100%; /* Memastikan container tetap responsif */
+    box-sizing: border-box; /* Memastikan padding tidak memengaruhi lebar total */
 }
+
+/* Media query untuk layar kecil */
+@media (max-width: 600px) {
+    .form-container {
+        padding: 15px; /* Mengurangi padding untuk layar kecil */
+        border-radius: 3px; /* Menyesuaikan sudut border */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Mengurangi bayangan untuk layar kecil */
+    }
+}
+
 
 form {
     display: flex;
@@ -253,15 +264,6 @@ input {
     border-top: 6px solid #f4f7f6; /* soft white */
     border-radius: 50%;
     animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
 }
 
 .verification-container {
