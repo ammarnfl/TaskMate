@@ -56,10 +56,6 @@ h1 {
     text-align: center;
 }
 
-h4 {
-    color: var(--gray-color);
-}
-
 #title-header {
     margin: 20px 30px;
 }
@@ -94,8 +90,23 @@ h4 {
         width: 95%;
         max-height: 95vh;
     }
+    .terms-container {
+        padding: 15px; /* Mengurangi padding untuk layar kecil */
+        border-radius: 3px; /* Menyesuaikan sudut border */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Mengurangi bayangan untuk layar kecil */
+    }
 }
 
+.terms-container {
+    background-color: var(--background-color);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 650px; /* Membatasi lebar maksimum container */
+    margin: 0 auto; /* Memusatkan container */
+    width: 100%; /* Memastikan container tetap responsif */
+    box-sizing: border-box; /* Memastikan padding tidak memengaruhi lebar total */
+}
 
 form {
     display: flex;
