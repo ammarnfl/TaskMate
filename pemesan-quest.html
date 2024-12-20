@@ -6,6 +6,7 @@
     <title>TaskMate - Pemesan Quest</title>
     <link rel="stylesheet" href="css/styles.css">
     <script type="module" src="js/auth.js" defer></script>
+    <script defer src="js/pemesan-quest.js"></script>
 </head>
 <body id="quest">
     <header>
@@ -13,8 +14,7 @@
         <button id="logoutBtn">Log Out</button>
     </header>
     <div class="container-quest">
-        <h2>No Quest Submitted Yet</h2>
-        <h4>Start creating your task now!</h4>
+        <h2>Your Quests</h2>
         <div id="questList"></div>
         <button id="addQuestBtn" class="floating-btn">Add Quest</button>
     </div>
@@ -25,6 +25,14 @@
             <form id="addQuestForm">
                 <input type="text" id="questTitle" placeholder="Quest Title" required>
                 <textarea id="questDescription" placeholder="Quest Description" required></textarea>
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" required>
+                <label for="startTime">Start Time:</label>
+                <input type="time" id="startTime" required>
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate" required>
+                <label for="endTime">End Time:</label>
+                <input type="time" id="endTime" required>
                 <button type="submit">Add Quest</button>
                 <button type="button" id="cancelAddQuest">Cancel</button>
             </form>

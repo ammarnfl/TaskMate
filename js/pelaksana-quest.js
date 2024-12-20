@@ -1,15 +1,4 @@
-const auth = firebase.auth();
-const database = firebase.database();
-
 const questList = document.getElementById('questList');
-
-auth.onAuthStateChanged((user) => {
-    if (user) {
-        loadQuests();
-    } else {
-        window.location.href = 'index.html';
-    }
-});
 
 function loadQuests() {
     const questsRef = database.ref('quests');
