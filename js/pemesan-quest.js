@@ -4,7 +4,7 @@ const addQuestModal = document.getElementById('addQuestModal');
 const addQuestForm = document.getElementById('addQuestForm');
 const cancelAddQuest = document.getElementById('cancelAddQuest');
 
-// Sampel data quest
+// Sample quest data (unchanged)
 const sampleQuests = [
     {
         title: "Membeli Makanan Kucing",
@@ -35,7 +35,7 @@ const sampleQuests = [
     }
 ];
 
-// Render quests
+// Render quests function (unchanged)
 function renderQuests(quests) {
     questList.innerHTML = '';
     quests.forEach((quest) => {
@@ -58,20 +58,24 @@ function renderQuests(quests) {
     });
 }
 
-
-// Load sampel quests
+// Load sample quests
 document.addEventListener('DOMContentLoaded', () => {
     renderQuests(sampleQuests);
+    // Ensure the modal is hidden when the page loads
+    addQuestModal.style.display = 'none';
 });
 
+// Show modal when Add Quest button is clicked
 addQuestBtn.addEventListener('click', () => {
-    addQuestModal.style.display = 'block';
+    addQuestModal.style.display = 'flex';
 });
 
+// Hide modal when Cancel button is clicked
 cancelAddQuest.addEventListener('click', () => {
     addQuestModal.style.display = 'none';
 });
 
+// Handle form submission
 addQuestForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -101,3 +105,4 @@ addQuestForm.addEventListener('submit', (e) => {
 function seeDetails(title) {
     alert(`Details for quest: ${title}`);
 }
+

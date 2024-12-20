@@ -90,6 +90,10 @@ h4 {
         border-radius: 3px; /* Menyesuaikan sudut border */
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Mengurangi bayangan untuk layar kecil */
     }
+    .modal-content {
+        width: 95%;
+        max-height: 95vh;
+    }
 }
 
 
@@ -164,7 +168,6 @@ header h1 {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -175,6 +178,8 @@ header h1 {
     border-radius: 5px;
     width: 80%;
     max-width: 500px;
+    max-height: 90vh; /* Prevent modal from being taller than the viewport */
+    overflow-y: auto; /* Add scrollbar if content is too tall */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -411,6 +416,7 @@ input {
     width: fit-content;
 }
 
+/* Pemesan Status */
 .quest-status.pending {
     background-color: #f0ad4e; /* orange */
 }
@@ -425,6 +431,42 @@ input {
 
 .quest-status.cancelled {
     background-color: #d9534f; /* red */
+}
+
+/* Pelaksana Status */
+.quest-status.available {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.quest-status.accepted {
+    background-color: #2196F3;
+    color: white;
+}
+
+.accept-btn, .cancel-btn {
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: var(--background-color);
+}
+
+.accept-btn {
+    background-color: var(--primary-color);
+}
+
+.accept-btn:hover {
+    background-color: #003c8d;
+}
+
+.cancel-btn {
+    background-color: #f44336;
+}
+
+.cancel-btn:hover {
+    background-color: #d32f2f;
 }
 
 .details-btn {
